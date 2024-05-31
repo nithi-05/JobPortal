@@ -1,0 +1,79 @@
+﻿@model JobPortal.Models.AddJobs
+@{
+    ViewBag.Title = "AddJob_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Post Jobs</h2>
+<hr />
+@using (Html.BeginForm("AddJob_Click", "AddJobs", FormMethod.Post))
+{
+    <div>
+        <label>Job Name</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_JobName, new { @class = "form-control", @placeholder = "Job Name" })
+        @Html.ValidationMessageFor(m => m.Add_JobName, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Job Vacancies</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_Vacancy, new { @class = "form-control", @placeholder = "Vacancies" })
+        @Html.ValidationMessageFor(m => m.Add_Vacancy, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Required Skills</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_RequiredSkill, new { @class = "form-control", @placeholder = "Required Skills" })
+        @Html.ValidationMessageFor(m => m.Add_RequiredSkill, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Experience</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_Experience, new { @class = "form-control", @placeholder = "Experience" })
+        @Html.ValidationMessageFor(m => m.Add_Experience, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Qualifications</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_Qualification, new { @class = "form-control", @placeholder = "Required Qualifications" })
+        @Html.ValidationMessageFor(m => m.Add_Qualification, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Salary</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_Salary, new { @class = "form-control", @placeholder = "Salary" })
+        @Html.ValidationMessageFor(m => m.Add_Salary, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Job Location</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_Location, new { @class = "form-control", @placeholder = "Job Location" })
+        @Html.ValidationMessageFor(m => m.Add_Location, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Start Date</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_StartDate, new { @class = "form-control",@type="date", @placeholder = "Start Date" })
+        @Html.ValidationMessageFor(m => m.Add_StartDate, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>End Date</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Add_EndDate, new { @class = "form-control",@type="date", @placeholder = "End Date" })
+        @Html.ValidationMessageFor(m => m.Add_EndDate, "", new { @class = "text-danger" })
+    </div>
+    <hr />
+    <div>
+        <input type="submit" value="Post Job" class="btn btn-primary" />
+        @Html.DisplayFor(m => m.Msg, "", new { @class = "text-info" })
+    </div>
+}

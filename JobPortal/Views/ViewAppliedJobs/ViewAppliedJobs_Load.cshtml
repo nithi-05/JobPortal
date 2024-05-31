@@ -1,0 +1,83 @@
+﻿@model JobPortal.Models.ViewAppliedJobs
+@{
+    ViewBag.Title = "ViewAppliedJobs_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    th, td {
+        padding: 5px;
+    }
+
+    #cards {
+        padding: 15px;
+    }
+
+</style>
+<h2>Applied Jobs</h2>
+<hr />
+@using (Html.BeginForm("ViewAppliedJobs_Load", "ViewAppliedJobs", FormMethod.Get))
+{
+    if (Model != null)
+    {
+        if (Model.ViewJob != null && Model.ViewJob.Count != 0)
+        {
+            <div id="cards" class="card" style="width: 1200px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                <h4 class="card card-title" align="left">Job List</h4>
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            <label>Job</label>
+                        </th>
+                        <th>
+                            <label>Company</label>
+                        </th>
+                        <th>
+                            <label>Resume</label>
+                        </th>
+                        <th>
+                            <label>Date</label>
+                        </th>
+                        <th>
+                            <label>Status</label>
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model.ViewJob)
+                    {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.ViewJobName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.ViewCompanyName)
+                    </td>
+                    <td>
+                        <a href="#">@Html.DisplayFor(modelitem => item.ViewResume)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.ViewDate)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelitem => item.ViewStatus)
+                    </td>
+                </tr>
+                    }
+
+                </table>
+            </div>
+        }
+        else
+        {
+            <script>
+                alert("You have not applied any jobs yet.");
+            </script>
+
+        }
+    }
+}
+    <div id="cards">
+        @Html.ActionLink("Back to Home","UserHome","Profile")
+    </div>

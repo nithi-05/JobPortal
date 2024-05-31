@@ -1,0 +1,19 @@
+﻿@model JobPortal.Models.CompanyProfile
+@{
+    ViewBag.Title = "CompanyProfileView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Company Profile</h2>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@Model.CompanyName</h3>
+        <p class="card-text"><b>Address: </b>@Model.CompanyAddress</p>
+        <p class="card-text"><b>Phone: </b>@Model.CompanyPhone</p>
+        <p class="card-text"><b>Email: </b>@Model.CompanyEmail</p>
+        <hr>
+        <a href="#" class="card-link">Edit Company Profile</a>&nbsp;
+        <a href="CompanyHome" class="card-link">Go Back</a>
+    </div>
+</div>

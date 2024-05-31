@@ -1,0 +1,28 @@
+﻿@model JobPortal.Models.UserProfile
+@{
+    ViewBag.Title = "ProfileView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Profile</h2>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@Model.name</h3>
+        <p class="card-text"><b>Age: </b>@Model.age Y/o</p>
+        <p class="card-text"><b>Address: </b>@Model.address</p>
+        <p class="card-text"><b>Pincode: </b>@Model.pincode</p>
+        <p class="card-text"><b>Phone: </b>@Model.phone</p>
+        <p class="card-text"><b>Email: </b>@Model.email</p>
+        <p class="card-text"><b>Gender: </b>@Model.gender</p>
+        <p class="card-text"><b>District: </b>@Model.district</p>
+        <p class="card-text"><b>State: </b>@Model.state</p>
+        <p class="card-text"><b>Qualification: </b>@Model.qualification</p>
+        <p class="card-text"><b>Skills: </b>@Model.skills</p>
+        <p class="card-text"><b>CGPA: </b>@Model.cgpa</p>
+        <hr>
+        <a href="EditProfile" class="card-link">Edit Profile</a>&nbsp;
+        <a href="UserHome" class="card-link">Go Back</a>
+    </div>
+</div>
+

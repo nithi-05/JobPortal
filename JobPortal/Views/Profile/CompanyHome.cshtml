@@ -1,0 +1,13 @@
+﻿@model JobPortal.Models.CompanyProfile
+@{
+    ViewBag.Title = "CompanyHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Welcome @Model.CompanyName</h2>
+<div class="container-fluid">
+    <div>
+        @Html.ActionLink("Post a Job", "AddJob_Load", "AddJobs","",new {@class="btn btn-primary"})
+
+    </div>
+</div>

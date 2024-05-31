@@ -1,0 +1,242 @@
+﻿@model JobPortal.Models.DisplayAllnSearch
+@{
+    ViewBag.Title = "Jobs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="cards">
+
+</div>
+<style>
+    th, td {
+        padding: 5px;
+    }
+
+    #cards {
+        padding: 15px;
+    }
+    #cardssearch {
+        padding: 10px;
+    }
+
+    .view {
+        display: none;
+    }
+
+        .view.active {
+            display: block;
+        }
+</style>
+<script>
+    function toggleView() {
+        var tableView = document.getElementById('tableView');
+        var cardView = document.getElementById('cardView');
+        tableView.classList.toggle('active');
+        cardView.classList.toggle('active');
+    }
+</script>
+
+<div>
+    @using (Html.BeginForm("SearchJob_Click", "DisplayAllJobs", FormMethod.Post))
+    {
+        <div id="cardssearch" class="card" align="center" style="width: 1200px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+            <h4 class="card card-title" align="left">Search by filter</h4>
+            <hr />
+            <table>
+                @*<tr>
+                    <th>
+                        <label>JobName</label>
+                    </th>
+                    <th>
+                        <label>Skills</label>
+                    </th>
+                    <th>
+                        <label>Location</label>
+                    </th>
+                </tr>*@
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(m => m.insertse.JobName, new { @class = "form-control", @placeholder = "Job Name" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.insertse.RequiredSkill, new { @class = "form-control", @placeholder = "Skills" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.insertse.Location, new { @class = "form-control", @placeholder = "Location" })
+                    </td>
+                    <td>
+                        <input type="submit" value="Search" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+            </div>
+            }
+        </div>
+        <hr />
+        <button id="toggleButton" class="btn-link" onclick="toggleView()">Toggle View</button>
+        <div id="tableView" class="view active">
+            @using (Html.BeginForm("DisplayAllJob_Load", "DisplayAllJobs", FormMethod.Get))
+            {
+                if (Model != null)
+                {
+                    if (Model.selectjob != null && Model.selectjob.Count != 0)
+                    {
+            <div id="cards" class="card" style="width: 1200px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                <h4 class="card card-title" align="left">Job List</h4>
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            <label>Role</label>
+                        </th>
+                        <th>
+                            <label>Company</label>
+                        </th>
+                        <th>
+                            <label>Vacancies</label>
+                        </th>
+                        <th>
+                            <label>Required Skills</label>
+                        </th>
+                        <th>
+                            <label>Experience</label>
+                        </th>
+                        <th>
+                            <label>Qualification</label>
+                        </th>
+                        <th>
+                            <label>Salary</label>
+                        </th>
+                        <th>
+                            <label>Job Location</label>
+                        </th>
+                        <th>
+                            <label>Starting Date</label>
+                        </th>
+                        <th>
+                            <label>Closing Date</label>
+                        </th>
+                        <th>
+                            <label>Status</label>
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model.selectjob)
+                    {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.JobName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.CompanyName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Vacancy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.RequiredSkill)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Experience)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Qualification)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.JobStatus)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Apply Now", "ApplyJob_Load", "ApplyJob", new { cid = item.CId, jid = item.JobId }, null)
+                    </td>
+                </tr>
+                    }
+
+                </table>
+            </div>
+                            }
+                            else
+                            {
+                            <script>
+                                alert("No Matching Jobs Found!");
+                            </script>
+
+                            }
+                            }
+                            }
+                        </div>
+
+                        <div id="cardView" class="view">
+                            @using (Html.BeginForm("DisplayAllJob_Load", "DisplayAllJobs", FormMethod.Get))
+                            {
+                                if (Model != null)
+                                {
+                                    if (Model.selectjob != null && Model.selectjob.Count != 0)
+                                    {
+                                        foreach (var item in Model.selectjob)
+                                        {
+                                            <div id="cards" class="row mb-4">
+                                                <div class="col-md-4 mb-4">
+                                                    <div id="cards" class="card" style="width: 800px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                                                        <div class="card-body" align="center">
+                                                            <h3 class="card-title">
+                                                                @Html.DisplayFor(modelitem => item.JobName)
+                                                            </h3>
+                                                            <h4 class="card-title">
+                                                                @Html.DisplayFor(modelitem => item.CompanyName)
+                                                            </h4>
+                                                            <p class="card-text">
+                                                                Job Location: @Html.DisplayFor(modelitem => item.Location)
+                                                            </p>
+                                                            <p class="card-text">
+                                                                Qualification: @Html.DisplayFor(modelitem => item.Qualification)
+                                                            </p>
+                                                            <p class="card-text">
+                                                                Skills: @Html.DisplayFor(modelitem => item.RequiredSkill)
+                                                            </p>
+                                                            <p class="card-text">
+                                                                Experience: @Html.DisplayFor(modelitem => item.Experience) Required
+                                                            </p>
+                                                            <p class="card-text">
+                                                                Salary: @Html.DisplayFor(modelitem => item.Salary)
+                                                            </p>
+                                                            <p class="card-text">
+                                                                Vacancies: @Html.DisplayFor(modelitem => item.Vacancy)
+                                                            </p>
+                                                            <p class="card-text">
+                                                                Starting Date: @Html.DisplayFor(modelitem => item.StartDate)
+                                                            </p>
+                                                            <p class="card-text">
+                                                                Closing Date: @Html.DisplayFor(modelitem => item.EndDate)
+                                                            </p>
+                                                            <p class="card-text">
+                                                                Status: @Html.DisplayFor(modelitem => item.JobStatus)
+                                                            </p>
+                                                            @Html.ActionLink("Apply Now", "ApplyJob_Load", "ApplyJob",new {cid=item.CId,jid=item.JobId},null)
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                    }
+                                }
+                            }
+                        </div>
+<div id="cards">
+    @Html.ActionLink("Back to Home","UserHome","Profile")
+</div>

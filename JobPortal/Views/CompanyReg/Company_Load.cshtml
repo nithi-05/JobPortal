@@ -1,0 +1,67 @@
+﻿@model JobPortal.Models.CompanyRegistration
+@{
+    ViewBag.Title = "Register Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register Company</h2>
+<hr />
+
+<div>
+    @using (Html.BeginForm("Company_Click", "CompanyReg", FormMethod.Post))
+    {
+        <div>
+            <label>Company Name</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" ,@placeholder="Company Name"})
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <label>Company Address</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Company Address" })
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <label>Company Email</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Company Email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <label>Company Phone</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @placeholder = "Company Phone" })
+            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <label>Enter Username</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Username" })
+            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <label>Password</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <label>Confirm Password</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <input type="submit" value="Register" class="btn btn-primary" />
+            @Html.DisplayFor(m => m.Msg, "", new { @class = "text-info" })
+        </div>
+    }
+</div>

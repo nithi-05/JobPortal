@@ -1,0 +1,84 @@
+﻿@model JobPortal.Models.UserProfile
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Your Profile</h2>
+<hr />
+<div>
+    @using (Html.BeginForm("Edit_Click", "Profile", FormMethod.Post))
+    {
+        <div>
+            <label>Name</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.name, new { @class = "form-control", @placeholder = "Name" })
+        </div>
+        <div>
+            <label>Address</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.address, new { @class = "form-control", @placeholder = "Address" })
+        </div>
+        <div>
+            <label>Age</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.age, new { @class = "form-control", @placeholder = "Age" })
+        </div>
+        <div>
+            <label>Gender</label>
+        </div>
+        <div>
+            Male
+            @Html.RadioButtonFor(model => model.gender, "Male")
+            Female
+            @Html.RadioButtonFor(model => model.gender, "Female")
+        </div>
+        <br />
+        <div>
+            <label>Phone</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.phone, new { @class = "form-control", @placeholder = "Phone" })
+        </div>
+        <div>
+            <label>Email</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Email" })
+        </div>
+        <div>
+            <label>District</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.district, new { @class = "form-control", @placeholder = "District" })
+        </div>
+        <div>
+            <label>Pincode</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.pincode, new { @class = "form-control", @placeholder = "Pincode" })
+        </div>
+
+        <div>
+            <label>CGPA</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.cgpa, new { @class = "form-control", @placeholder = "CGPA" })
+        </div>
+        <div>
+            <label>Skills</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.skills, new { @class = "form-control", @placeholder = "Your Skills" })
+        </div>
+        <div>
+            <br />
+            <input type="submit" value="Update" class="btn btn-primary" />
+
+        </div>
+    }
+</div>
+

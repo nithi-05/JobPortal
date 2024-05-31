@@ -1,0 +1,50 @@
+﻿@model JobPortal.Models.UserProfile
+@{
+    ViewBag.Title = "UserHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #cards {
+        padding: 15px;
+    }
+    .row {
+        padding: 5px;
+    }
+</style>
+<h2>Hi! @Model.name</h2>
+<h4>Explore new opportunities and shape your future with us.</h4>
+<hr />
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-4 mb-4">
+            <div class="mx-2">
+                <div id="cards" class="card" style="width: 400px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                    <div class="card-body" align="center">
+                        <h4 class="card-title"><b>View Jobs</b></h4>
+                        <p class="card-text">
+                            Check latest updates.
+                        </p>
+                        @Html.ActionLink("View", "DisplayAllJob_Load", "DisplayAllJobs", "", new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-4">
+            <div class="mx-2">
+                <div id="cards" class="card" style="width: 400px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                    <div class="card-body" align="center">
+                        <h4 class="card-title"><b>Applied Jobs</b></h4>
+                        <p class="card-text">
+                            Check jobs you've applied.
+                        </p>
+                        @Html.ActionLink("View", "ViewAppliedJobs_Load", "ViewAppliedJobs","",new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
